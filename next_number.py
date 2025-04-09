@@ -1,8 +1,18 @@
 # File Name: next_number.py
 # Author: Zhang Anjun
 # Date: 2025-04-09
-# Version: 1.0
+# Version: 1.1
 # © 2025 Zhang Anjun. All rights reserved.
+
+from sys import exit
+
+# Copyright notice
+def copyrightNotice():
+    print("")
+    print("Author: Zhang Anjun")
+    print("Version: 1.1")
+    print("© 2025 Zhang Anjun. All rights reserved.")
+    print("")
 
 # Shared functions
 def listSwap(f,i,j):
@@ -79,6 +89,10 @@ def splitNumber(num):
 
 num = input("Enter a number: ")
 f = splitNumber(num)
+
 print("The next smaller number is:", smallerNum(f, len(f)))
 f = splitNumber(num)
 print("The next bigger number is:", biggerNum(f, len(f)))
+copyrightNotice()
+input("Press Enter to exit. ")
+exit(0)
