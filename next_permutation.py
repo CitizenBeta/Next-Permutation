@@ -1,7 +1,7 @@
-# File Name: next_number.py
+# File Name: next_permutation.py
 # Author: Zhang Anjun
 # Date: 2025-04-13
-# Version: 1.3
+# Version: 1.4
 # © 2025 Zhang Anjun. All rights reserved.
 
 from sys import exit
@@ -10,7 +10,7 @@ from sys import exit
 def copyrightNotice():
     print("")
     print("Author: Zhang Anjun")
-    print("Version: 1.3")
+    print("Version: 1.4")
     print("© 2025 Zhang Anjun. All rights reserved.")
     print("")
 
@@ -61,7 +61,7 @@ def findRightBigger(f, length, i):
         j = j - 1
     return j
 
-# Next Number
+# Next smaller permutation
 def smallerNum(f, length):
     i = length - 2
     while i != -1:
@@ -74,6 +74,7 @@ def smallerNum(f, length):
             return f
     return f
 
+# Next bigger permutation
 def biggerNum(f, length):
     i = length - 2
     while i != -1:
@@ -86,7 +87,7 @@ def biggerNum(f, length):
             return f
     return f
 
-def splitNumber(num):
+def splitNum(num):
     i = 0
     f = []
     while i != len(num):
@@ -95,9 +96,9 @@ def splitNumber(num):
     return f
 
 num = input("Enter a number: ")
-f = splitNumber(num)
-print("The next smaller number is:", smallerNum(f.copy(), len(f)))
-print("The next bigger number is:", biggerNum(f.copy(), len(f)))
+f = splitNum(num)
+print("The next smaller permutation is:", smallerNum(f.copy(), len(f)))
+print("The next bigger permutation is:", biggerNum(f.copy(), len(f)))
 copyrightNotice()
 input("Press Enter to exit. ")
 exit(0)
