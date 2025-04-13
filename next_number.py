@@ -1,7 +1,7 @@
 # File Name: next_number.py
 # Author: Zhang Anjun
 # Date: 2025-04-09
-# Version: 1.1
+# Version: 1.2
 # © 2025 Zhang Anjun. All rights reserved.
 
 from sys import exit
@@ -10,11 +10,10 @@ from sys import exit
 def copyrightNotice():
     print("")
     print("Author: Zhang Anjun")
-    print("Version: 1.1")
+    print("Version: 1.2")
     print("© 2025 Zhang Anjun. All rights reserved.")
     print("")
 
-# Shared functions
 def listSwap(f,i,j):
     f[i], f[j] = f[j], f[i]
 
@@ -52,13 +51,13 @@ def reverseSegment(f, start, end):
     
 # Next Number
 def smallerNum(f, length):
-    i = length - 1
-    while i != 0:
+    i = length - 2
+    while i != -1:
         if ifAscending(f, i, length-1):
             i = i - 1
         else:                                   # f[i] is the first digit that is in descending order
             j = length - 1
-            while f[i] <= f[j]:                 # f[j] is the first bigger digit after f[i] (Right to Left)
+            while f[j] >= f[i]:                 # f[j] is the first bigger digit after f[i] (Right to Left)
                 j = j - 1
             listSwap(f, i, j)                   # Swap f[i] and f[j]
             reverseSegment(f, i+1, length-1)    # Reverse digits after f[i]
@@ -66,13 +65,13 @@ def smallerNum(f, length):
     return f
 
 def biggerNum(f, length):
-    i = length - 1
-    while i != 0:
+    i = length - 2
+    while i != -1:
         if ifDescending(f, i, length-1):        # f[j] is the first digit that is in descending order
             i = i - 1
         else:
             j = length - 1
-            while f[i] >= f[j]:                 # f[j] is the first smaller digit after f[i] (Right to Left)
+            while f[j] <= f[i]:                 # f[j] is the first smaller digit after f[i] (Right to Left)
                 j = j - 1
             listSwap(f, i, j)                   # Swap f[i] and f[j]
             reverseSegment(f, i+1, length-1)    # Reverse digits after f[i]
@@ -89,10 +88,8 @@ def splitNumber(num):
 
 num = input("Enter a number: ")
 f = splitNumber(num)
-
-print("The next smaller number is:", smallerNum(f, len(f)))
-f = splitNumber(num)
-print("The next bigger number is:", biggerNum(f, len(f)))
+print("The next smaller number is:", smallerNum(f.copy(), len(f)))
+print("The next bigger number is:", biggerNum(f.copy(), len(f)))
 copyrightNotice()
 input("Press Enter to exit. ")
 exit(0)
