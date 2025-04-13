@@ -1,7 +1,7 @@
 # File Name: next_number.py
 # Author: Zhang Anjun
-# Date: 2025-04-09
-# Version: 1.2
+# Date: 2025-04-13
+# Version: 1.3
 # © 2025 Zhang Anjun. All rights reserved.
 
 from sys import exit
@@ -10,14 +10,14 @@ from sys import exit
 def copyrightNotice():
     print("")
     print("Author: Zhang Anjun")
-    print("Version: 1.2")
+    print("Version: 1.3")
     print("© 2025 Zhang Anjun. All rights reserved.")
     print("")
 
 def listSwap(f,i,j):
     f[i], f[j] = f[j], f[i]
 
-# Check if f is ascending (>=) from f[start] to f[end]
+# Check if f is ascending (<=) from f[start] to f[end]
 def ifAscending(f, start, end):
     if end - start == 0:
         return True
@@ -29,7 +29,7 @@ def ifAscending(f, start, end):
     else:
         return True
 
-# Check if f is descending (<=) from f[start] to f[end]
+# Check if f is descending (>=) from f[start] to f[end]
 def ifDescending(f, start, end):
     if end - start == 0:
         return True
@@ -48,17 +48,27 @@ def reverseSegment(f, start, end):
         listSwap(f, start+i, end-i)
         i = i + 1
     return f
-    
+
+def findRightSmaller(f, length, i):
+    j = length - 1
+    while f[j] >= f[i]:
+        j = j - 1
+    return j
+
+def findRightBigger(f, length, i):
+    j = length - 1
+    while f[j] <= f[i]:
+        j = j - 1
+    return j
+
 # Next Number
 def smallerNum(f, length):
     i = length - 2
     while i != -1:
-        if ifAscending(f, i, length-1):
+        if ifAscending(f, i, length-1):         # f[i] is the first digit that is in descending order
             i = i - 1
-        else:                                   # f[i] is the first digit that is in descending order
-            j = length - 1
-            while f[j] >= f[i]:                 # f[j] is the first bigger digit after f[i] (Right to Left)
-                j = j - 1
+        else:
+            j = findRightSmaller(f, length, i)  # f[j] is the first smaller digit after f[i] (Right to Left)
             listSwap(f, i, j)                   # Swap f[i] and f[j]
             reverseSegment(f, i+1, length-1)    # Reverse digits after f[i]
             return f
@@ -67,12 +77,10 @@ def smallerNum(f, length):
 def biggerNum(f, length):
     i = length - 2
     while i != -1:
-        if ifDescending(f, i, length-1):        # f[j] is the first digit that is in descending order
+        if ifDescending(f, i, length-1):        # f[i] is the first digit that is in descending order
             i = i - 1
         else:
-            j = length - 1
-            while f[j] <= f[i]:                 # f[j] is the first smaller digit after f[i] (Right to Left)
-                j = j - 1
+            j = findRightBigger(f, length, i)   # f[j] is the first bigger digit after f[i] (Right to Left)
             listSwap(f, i, j)                   # Swap f[i] and f[j]
             reverseSegment(f, i+1, length-1)    # Reverse digits after f[i]
             return f
