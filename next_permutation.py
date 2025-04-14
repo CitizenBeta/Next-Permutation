@@ -1,7 +1,7 @@
 # File Name: next_permutation.py
 # Author: Zhang Anjun
-# Date: 2025-04-13
-# Version: 1.4
+# Date: 2025-04-14
+# Version: 1.4.1
 # © 2025 Zhang Anjun. All rights reserved.
 
 from sys import exit
@@ -10,11 +10,11 @@ from sys import exit
 def copyrightNotice():
     print("")
     print("Author: Zhang Anjun")
-    print("Version: 1.4")
+    print("Version: 1.4.1")
     print("© 2025 Zhang Anjun. All rights reserved.")
     print("")
 
-def listSwap(f,i,j):
+def listSwap(f, i, j):
     f[i], f[j] = f[j], f[i]
 
 # Check if f is ascending (<=) from f[start] to f[end]
