@@ -1,19 +1,26 @@
 # File Name: next_permutation.py
 # Author: Zhang Anjun
 # Date: 2025-04-14
-# Version: 1.4.1
+# Version: 1.4.2
 # © 2025 Zhang Anjun. All rights reserved.
+
+# Acknowledgements
+# Portions of the code may utilize the following copyrighted material, 
+# the use of which is hereby acknowledged.
+
+# Henry McLoughlin
+# © 2025 Henry McLoughlin. All rights reserved.
 
 from sys import exit
 
-# Copyright notice
 def copyrightNotice():
     print("")
     print("Author: Zhang Anjun")
-    print("Version: 1.4.1")
+    print("Version: 1.4.2")
     print("© 2025 Zhang Anjun. All rights reserved.")
     print("")
 
+# Begin Code Written by Henry McLoughlin
 def listSwap(f, i, j):
     f[i], f[j] = f[j], f[i]
 
@@ -48,6 +55,7 @@ def reverseSegment(f, start, end):
         listSwap(f, start+i, end-i)
         i = i + 1
     return f
+# End Code Written by Henry McLoughlin
 
 def findRightSmaller(f, length, i):
     j = length - 1
