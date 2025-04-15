@@ -1,13 +1,12 @@
 # File Name: next_permutation.py
 # Author: Zhang Anjun
-# Date: 2025-04-14
-# Version: 1.4.2
+# Date: 2025-04-15
+# Version: 1.4.3
 # © 2025 Zhang Anjun. All rights reserved.
 
 # Acknowledgements
 # Portions of the code may utilize the following copyrighted material, 
 # the use of which is hereby acknowledged.
-
 # Henry McLoughlin
 # © 2025 Henry McLoughlin. All rights reserved.
 
@@ -16,11 +15,10 @@ from sys import exit
 def copyrightNotice():
     print("")
     print("Author: Zhang Anjun")
-    print("Version: 1.4.2")
+    print("Version: 1.4.3")
     print("© 2025 Zhang Anjun. All rights reserved.")
     print("")
 
-# Begin Code Written by Henry McLoughlin
 def listSwap(f, i, j):
     f[i], f[j] = f[j], f[i]
 
@@ -55,7 +53,6 @@ def reverseSegment(f, start, end):
         listSwap(f, start+i, end-i)
         i = i + 1
     return f
-# End Code Written by Henry McLoughlin
 
 def findRightSmaller(f, length, i):
     j = length - 1
@@ -95,16 +92,16 @@ def biggerNum(f, length):
             return f
     return f
 
-def splitNum(num):
+def splitNum(num, length):
     i = 0
     f = []
-    while i != len(num):
+    while i != length:
         f.append(int(num[i]))
         i = i + 1
     return f
 
 num = input("Enter a number: ")
-f = splitNum(num)
+f = splitNum(num, len(num))
 print("The next smaller permutation is:", smallerNum(f.copy(), len(f)))
 print("The next bigger permutation is:", biggerNum(f.copy(), len(f)))
 copyrightNotice()
